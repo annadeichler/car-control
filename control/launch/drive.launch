@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+Launch file for automated driving simulation.
+-->
+
+<launch>
+	<node
+		pkg="pcl_solution"
+		type="pcl_solution_node"
+		name="pcl_solution_node"
+		output="screen">
+		
+       </node>
+	<node
+		pkg="opencv_solution"
+		type="opencv_solution_node"
+		name="opencv_solution_node"
+		output="screen">
+		
+       </node>
+	<node
+		pkg="control"
+		type="control_node"
+		name="control_node"
+		output="screen">
+		
+       </node>
+
+ 	<include file="$(find car_simulation)/launch/simulation.launch">
+		<arg name="gazebo_gui" value="false" />
+		<arg name="world_name" value="simple_city.world" />
+		<arg name="rviz" value="true" />
+	</include>
+
+</launch>
+

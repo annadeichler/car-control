@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+To change the arguments when running through command line type:
+      roslaunch simple_control simple_control.launch throttle_param:=1.0 steer_param:=0.5
+-->
+
+<launch>
+   	<node
+		pkg="turtlesim"
+		type="turtle_teleop_key"
+		name="teleop_key"
+	/>
+	<node
+		pkg="ros_solution"
+		type="simple_control_node"
+		name="simple_control_node"
+		output="screen">
+]
+   		<param name="throttle_param"	value="1.0" />		 
+   		<param name="steer_param"	value="0.5" />
+		
+	</node>
+	<node
+		pkg="opencv_solution"
+		type="opencv_solution_node"
+		name="opencv_solution_node"
+		output="screen">
+		
+       </node>
+
+	<include file="$(find car_simulation)/launch/simulation.launch">
+		<arg name="gazebo_gui" value="false" />
+		<arg name="world_name" value="person.world" />
+		<arg name="rviz" value="true" />
+	</include>
+</launch>
